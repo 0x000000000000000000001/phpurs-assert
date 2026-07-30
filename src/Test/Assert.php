@@ -1,12 +1,10 @@
 <?php
 
-$assertImpl = function($message) {
-    return function($success) use ($message) {
-        return function() use ($message, $success) {
-            if (!$success) {
-                throw new \Exception($message);
-            }
-        };
+$assertImpl = function($message, $success) {
+    return function() use ($message, $success) {
+        if (!$success) {
+            throw new \Exception($message);
+        }
     };
 };
 
